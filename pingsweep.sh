@@ -1,6 +1,7 @@
 #! /bin/bash
 
-if [[ $1 =~ ^[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}$ ]] # Changed error handling so it only accepts a Class C IP, although the regex doesn't limit each octet to 255
+if [[ $1 =~ ^(([1-9]?[0-9]|1[0-9][0-9]|2([0-4][0-9]|5[0-5]))\.){2}([1-9]?[0-9]|1[0-9][0-9]|2([0-4][0-9]|5[0-5]))$ ]]
+# Changed error handling so it only accepts a Class C IP, restricts first octet to 1-255, and all others to 0-255
 then
 
 for ip in `seq 1 254`; do #Allows only last octet to be swept
